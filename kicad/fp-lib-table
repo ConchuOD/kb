@@ -1,0 +1,5 @@
+(fp_lib_table
+  (lib (name kb)(type Legacy)(uri G:/desktop/keyboard/kicad/kb.mod)(options "")(descr ""))
+  (lib (name keebs)(type KiCad)(uri G:/desktop/keyboard/libs/keebs.pretty-master)(options "")(descr "")(disabled))
+  (lib (name kicad)(type KiCad)(uri G:/desktop/keyboard/kicad)(options "")(descr ""))
+)

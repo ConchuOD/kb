@@ -1,0 +1,18 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    </head>
+    <body>
+    <h1>G:\desktop\keyboard\kicad\kb.sch</h1>
+    <p>24/11/2019 17:02:57</p>
+    <p>Eeschema (5.1.4)-1</p>
+    <p><b>Component Count:</b>187</p>
+    <table>
+    <tr><th style='width:640px'>Ref</th><th>Qnty</th><th>Value</th><th>Part</th><th>Datasheet</th><th>Description</th><th>Vendor</th></tr><tr><td>A95, B95, BCKT95, BSLH95, C95, COLON95, COMMA95, D95, E95, EIGHT95, EQL95, ESC95, F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, F95, FIVE95, FOUR95, FSH95, FSTOP95, G95, H95, HASH95, I95, J95, K95, L95, LSB95, M95, MINUS95, N1, N2, N3, N4, N5, N6, N7, N8, N9, N95, NDOT95, NINE95, NINUS95, NSLSH95, NSTAR95, NUMLK95, NZERO95, NZZERO95, O95, ONE95, P95, Q95, R95, RSB95, S95, SEVEN95, SIX95, T95, THREE95, TICK95, TWO95, U95, V95, W95, X95, Y95, Z95, ZERO95</td><td>77</td><td>CHERRY-MX</td><td>kb:CHERRYMX_CHERRY-MX</td><td></td><td></td><td></td></tr><tr><td>BKSP95, TAB95</td><td>2</td><td>CHERRY-MX</td><td>kb:CHERRYMX_CHERRY-MX</td><td></td><td></td><td></td></tr><tr><td>CAPS95</td><td>1</td><td>CHERRY-MX</td><td>kb:CHERRYMX_CHERRY-MX</td><td></td><td></td><td></td></tr><tr><td>D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, D16, D17, D18, D19, D20, D21, D22, D23, D24, D25, D26, D27, D28, D29, D30, D31, D32, D33, D34, D35, D36, D37, D38, D39, D40, D41, D42, D43, D44, D45, D46, D47, D48, D49, D50, D51, D52, D53, D54, D55, D56, D57, D58, D59, D60, D61, D62, D63, D64, D65, D66, D67, D68, D69, D70, D71, D72, D73, D74, D75, D76, D77, D78, D79, D80, D81, D82, D84, D85, D86, D87, D88, D89, D90, D91, D92, D93, D94</td><td>93</td><td>1N4148WS</td><td>kb:DIODES_1N4148WS</td><td></td><td></td><td></td></tr><tr><td>ENTER95</td><td>1</td><td>CHERRY-MX</td><td>kb:CHERRYMX_CHERRY-MX</td><td></td><td></td><td></td></tr><tr><td>FN95, LALT95, LCTRL95, LOS95, LSHFT95, RALT95, RCTRL95, ROS95, RSHFT95</td><td>9</td><td>CHERRY-MX</td><td>kb:CHERRYMX_CHERRY-MX</td><td></td><td></td><td></td></tr><tr><td>NNTER95, NPLUS95</td><td>2</td><td>CHERRY-MX</td><td>kb:CHERRYMX_CHERRY-MX</td><td></td><td></td><td></td></tr><tr><td>SPACE95</td><td>1</td><td>CHERRY-MX</td><td>kb:CHERRYMX_CHERRY-MX</td><td></td><td></td><td></td></tr><tr><td>U$1</td><td>1</td><td>TEENSY_3.1-3.2_OUTER_ROW</td><td>kb:TEENSY_3_AND_LC_SERIES_BOARDS_V1.4_TEENSY_3.1-3.2_OUTER_ROW</td><td></td><td></td><td></td></tr><!--TABLEROW-->
+    </table>
+    </body>
+</html>
+    
