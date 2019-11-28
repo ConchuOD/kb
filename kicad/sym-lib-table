@@ -1,3 +1,5 @@
 (sym_lib_table
   (lib (name kb)(type Legacy)(uri ${KIPRJMOD}/kb.lib)(options "")(descr ""))
+  (lib (name teensy)(type Legacy)(uri D:/kicad/libs/teensy_library/teensy_library-master/teensy.lib)(options "")(descr "")(disabled))
+  (lib (name Teensy_3_and_LC_Series_Boards_v1.4)(type Legacy)(uri ${KIPRJMOD}/Teensy_3_and_LC_Series_Boards_v1.4.lib)(options "")(descr ""))
 )

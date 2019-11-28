@@ -2,4 +2,7 @@
   (lib (name kb)(type Legacy)(uri G:/desktop/keyboard/kicad/kb.mod)(options "")(descr ""))
   (lib (name keebs)(type KiCad)(uri G:/desktop/keyboard/libs/keebs.pretty-master)(options "")(descr "")(disabled))
   (lib (name kicad)(type KiCad)(uri G:/desktop/keyboard/kicad)(options "")(descr ""))
+  (lib (name teensy)(type KiCad)(uri D:/kicad/libs/teensy.pretty/teensy.pretty-master)(options "")(descr "")(disabled))
+  (lib (name Teensy_3_and_LC_Series_Boards_v1.4)(type Legacy)(uri ${KIPRJMOD}/Teensy_3_and_LC_Series_Boards_v1.4.mod)(options "")(descr "")(disabled))
+  (lib (name Teensy3andLCBoards1_4)(type KiCad)(uri ${KIPRJMOD}/Teensy3andLCBoards1_4.pretty)(options "")(descr ""))
 )

@@ -1390,10 +1390,10 @@ F 3 "" H 27300 15600 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L kb:CHERRYMX_CHERRY-MX D95
+L kb:CHERRYMX_CHERRY-MX G1
 U 1 1 5DDA31D2
 P 21300 15600
-F 0 "D95" H 21100 15300 70  0000 L BNN
+F 0 "G1" H 21100 15300 70  0000 L BNN
 F 1 "CHERRY-MX" H 21060 15830 56  0000 L BNN
 F 2 "Button_Switch_Keyboard:SW_Cherry_MX_1.00u_PCB" H 21060 15830 56  0001 L BNN
 F 3 "" H 21300 15600 50  0001 C CNN
@@ -1951,17 +1951,6 @@ F 3 "" H 16800 11700 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L kb:TEENSY_3_AND_LC_SERIES_BOARDS_V1.4_TEENSY_3.1-3.2_OUTER_ROW T3_2
-U 1 1 5DDA5B3A
-P 23750 21550
-F 0 "T3_2" H 23531 22900 50  0000 L BNN
-F 1 "TEENSY_3.1-3.2_OUTER_ROW" H 23640 20050 50  0000 L BNN
-F 2 "kicad:TEENSY_3_AND_LC_SERIES_BOARDS_V1.4_TEENSY_3.0-3.2&LC_OUTER_ROW" H 23740 21340 65  0001 L TNN
-F 3 "" H 23750 21550 50  0001 C CNN
-	1    23750 21550
-	1    0    0    -1  
-$EndComp
-$Comp
 L kb:CHERRYMX_CHERRY-MX U1
 U 1 1 5DDA5C02
 P 22800 14300
@@ -2075,10 +2064,6 @@ Connection ~ 15700 12300
 Text Label 15800 19000 0    65   ~ 0
 COL0
 Wire Wire Line
-	22850 20450 22650 20450
-Text Label 22650 20534 2    65   ~ 0
-COL0
-Wire Wire Line
 	16700 11000 17200 11000
 Wire Wire Line
 	17200 11000 17200 12300
@@ -2113,10 +2098,6 @@ Connection ~ 17200 14900
 Connection ~ 17200 13600
 Connection ~ 17200 12300
 Text Label 17300 19000 0    65   ~ 0
-COL1
-Wire Wire Line
-	22850 20550 22650 20550
-Text Label 22650 20634 2    65   ~ 0
 COL1
 Wire Wire Line
 	18200 11000 18700 11000
@@ -2155,10 +2136,6 @@ Connection ~ 18700 12300
 Text Label 18800 19000 0    65   ~ 0
 COL2
 Wire Wire Line
-	22850 20650 22650 20650
-Text Label 22650 20734 2    65   ~ 0
-COL2
-Wire Wire Line
 	19700 11000 20200 11000
 Wire Wire Line
 	20200 11000 20200 12300
@@ -2191,10 +2168,6 @@ Connection ~ 20200 14900
 Connection ~ 20200 13600
 Connection ~ 20200 12300
 Text Label 20300 19000 0    65   ~ 0
-COL3
-Wire Wire Line
-	22850 20750 22650 20750
-Text Label 22650 20834 2    65   ~ 0
 COL3
 Wire Wire Line
 	21200 11000 21700 11000
@@ -2233,10 +2206,6 @@ Connection ~ 21700 12300
 Text Label 21800 19000 0    65   ~ 0
 COL4
 Wire Wire Line
-	22850 20850 22650 20850
-Text Label 22650 20934 2    65   ~ 0
-COL4
-Wire Wire Line
 	22700 11000 23200 11000
 Wire Wire Line
 	23200 11000 23200 12300
@@ -2273,10 +2242,6 @@ Connection ~ 23200 12300
 Text Label 23300 19000 0    65   ~ 0
 COL5
 Wire Wire Line
-	22850 20950 22650 20950
-Text Label 22650 21034 2    65   ~ 0
-COL5
-Wire Wire Line
 	24200 11000 24700 11000
 Wire Wire Line
 	24700 11000 24700 12300
@@ -2308,10 +2273,6 @@ Connection ~ 24700 12300
 Text Label 24800 19000 0    65   ~ 0
 COL6
 Wire Wire Line
-	22850 21050 22650 21050
-Text Label 22650 21134 2    65   ~ 0
-COL6
-Wire Wire Line
 	25700 11000 26200 11000
 Wire Wire Line
 	26200 11000 26200 12300
@@ -2331,10 +2292,6 @@ Connection ~ 26200 16200
 Connection ~ 26200 13600
 Connection ~ 26200 12300
 Text Label 26300 19000 0    65   ~ 0
-COL7
-Wire Wire Line
-	22850 21150 22650 21150
-Text Label 22650 21234 2    65   ~ 0
 COL7
 Wire Wire Line
 	27200 11000 27700 11000
@@ -2366,10 +2323,6 @@ Connection ~ 27700 14900
 Connection ~ 27700 13600
 Connection ~ 27700 12300
 Text Label 27800 19000 0    65   ~ 0
-COL8
-Wire Wire Line
-	22850 21250 22650 21250
-Text Label 22650 21334 2    65   ~ 0
 COL8
 Wire Wire Line
 	28700 11000 29200 11000
@@ -2408,10 +2361,6 @@ Connection ~ 29200 18800
 Text Label 29300 19000 0    65   ~ 0
 COL9
 Wire Wire Line
-	22850 21350 22650 21350
-Text Label 22650 21434 2    65   ~ 0
-COL9
-Wire Wire Line
 	30200 11000 30700 11000
 Wire Wire Line
 	30700 11000 30700 12300
@@ -2431,10 +2380,6 @@ Connection ~ 30700 13600
 Connection ~ 30700 12300
 Connection ~ 30700 17500
 Text Label 30800 19000 0    65   ~ 0
-COL10
-Wire Wire Line
-	22850 21450 22650 21450
-Text Label 22650 21534 2    65   ~ 0
 COL10
 Wire Wire Line
 	31700 11000 32200 11000
@@ -2473,10 +2418,6 @@ Connection ~ 32200 13600
 Text Label 32300 19000 0    65   ~ 0
 COL11
 Wire Wire Line
-	22850 21550 22650 21550
-Text Label 22650 21634 2    65   ~ 0
-COL11
-Wire Wire Line
 	33200 13600 33700 13600
 Wire Wire Line
 	33700 13600 33700 12300
@@ -2506,10 +2447,6 @@ Connection ~ 33700 16100
 Connection ~ 33700 17400
 Connection ~ 33700 12300
 Text Label 33800 19000 0    65   ~ 0
-COL12
-Wire Wire Line
-	22850 21650 22650 21650
-Text Label 22650 21734 2    65   ~ 0
 COL12
 Wire Wire Line
 	34700 13600 35200 13600
@@ -2546,10 +2483,6 @@ Connection ~ 35200 16100
 Connection ~ 35200 17400
 Connection ~ 35200 13600
 Text Label 35300 19000 0    65   ~ 0
-COL13
-Wire Wire Line
-	22850 21750 22650 21750
-Text Label 22650 21834 2    65   ~ 0
 COL13
 Wire Wire Line
 	14900 10500 14900 11000
@@ -3136,32 +3069,16 @@ Wire Wire Line
 Text Label 20500 10384 2    65   ~ 0
 ROW0
 Wire Wire Line
-	22850 22150 22650 22150
-Text Label 22650 22234 2    65   ~ 0
-ROW0
-Wire Wire Line
 	20900 11600 20500 11600
 Text Label 20500 11684 2    65   ~ 0
-ROW1
-Wire Wire Line
-	22850 22250 22650 22250
-Text Label 22650 22334 2    65   ~ 0
 ROW1
 Wire Wire Line
 	20900 12900 20500 12900
 Text Label 20500 12984 2    65   ~ 0
 ROW2
 Wire Wire Line
-	22850 22350 22650 22350
-Text Label 22650 22434 2    65   ~ 0
-ROW2
-Wire Wire Line
 	20900 14200 20500 14200
 Text Label 20500 14284 2    65   ~ 0
-ROW3
-Wire Wire Line
-	22850 22450 22650 22450
-Text Label 22650 22534 2    65   ~ 0
 ROW3
 Wire Wire Line
 	25400 15500 25000 15500
@@ -3220,10 +3137,6 @@ Wire Wire Line
 Text Label 23500 15584 2    65   ~ 0
 ROW4
 Wire Wire Line
-	22850 22550 22650 22550
-Text Label 22650 22634 2    65   ~ 0
-ROW4
-Wire Wire Line
 	26900 16800 26500 16800
 Text Label 26500 16884 2    65   ~ 0
 ROW5
@@ -3276,10 +3189,6 @@ Wire Wire Line
 Text Label 23500 16884 2    65   ~ 0
 ROW5
 Wire Wire Line
-	22850 22650 22650 22650
-Text Label 22650 22734 2    65   ~ 0
-ROW5
-Wire Wire Line
 	28400 18100 28000 18100
 Text Label 28000 18184 2    65   ~ 0
 ROW6
@@ -3319,10 +3228,6 @@ Wire Wire Line
 	22400 18100 22000 18100
 Text Label 22000 18184 2    65   ~ 0
 ROW6
-Wire Wire Line
-	22850 22750 22650 22750
-Text Label 22650 22834 2    65   ~ 0
-ROW6
 Text Label 15200 11000 0    10   ~ 0
 COL0
 Text Label 15200 14900 0    10   ~ 0
@@ -3336,8 +3241,6 @@ COL0
 Text Label 15200 13600 0    10   ~ 0
 COL0
 Text Label 15200 12300 0    10   ~ 0
-COL0
-Text Label 22850 20450 2    10   ~ 0
 COL0
 Text Label 16700 11000 0    10   ~ 0
 COL1
@@ -3353,8 +3256,6 @@ Text Label 16700 13600 0    10   ~ 0
 COL1
 Text Label 16700 12300 0    10   ~ 0
 COL1
-Text Label 22850 20550 2    10   ~ 0
-COL1
 Text Label 18200 11000 0    10   ~ 0
 COL2
 Text Label 18200 18800 0    10   ~ 0
@@ -3368,8 +3269,6 @@ COL2
 Text Label 18200 13600 0    10   ~ 0
 COL2
 Text Label 18200 12300 0    10   ~ 0
-COL2
-Text Label 22850 20650 2    10   ~ 0
 COL2
 Text Label 19700 11000 0    10   ~ 0
 COL3
@@ -3385,8 +3284,6 @@ Text Label 19700 13600 0    10   ~ 0
 COL3
 Text Label 19700 12300 0    10   ~ 0
 COL3
-Text Label 22850 20750 2    10   ~ 0
-COL3
 Text Label 21200 11000 0    10   ~ 0
 COL4
 Text Label 21200 18800 0    10   ~ 0
@@ -3400,8 +3297,6 @@ COL4
 Text Label 21200 13600 0    10   ~ 0
 COL4
 Text Label 21200 12300 0    10   ~ 0
-COL4
-Text Label 22850 20850 2    10   ~ 0
 COL4
 Text Label 22700 11000 0    10   ~ 0
 COL5
@@ -3417,8 +3312,6 @@ Text Label 22700 13600 0    10   ~ 0
 COL5
 Text Label 22700 12300 0    10   ~ 0
 COL5
-Text Label 22850 20950 2    10   ~ 0
-COL5
 Text Label 24200 11000 0    10   ~ 0
 COL6
 Text Label 24200 17500 0    10   ~ 0
@@ -3431,8 +3324,6 @@ Text Label 24200 13600 0    10   ~ 0
 COL6
 Text Label 24200 12300 0    10   ~ 0
 COL6
-Text Label 22850 21050 2    10   ~ 0
-COL6
 Text Label 25700 11000 0    10   ~ 0
 COL7
 Text Label 25700 16200 0    10   ~ 0
@@ -3442,8 +3333,6 @@ COL7
 Text Label 25700 13600 0    10   ~ 0
 COL7
 Text Label 25700 12300 0    10   ~ 0
-COL7
-Text Label 22850 21150 2    10   ~ 0
 COL7
 Text Label 27200 11000 0    10   ~ 0
 COL8
@@ -3456,8 +3345,6 @@ COL8
 Text Label 27200 13600 0    10   ~ 0
 COL8
 Text Label 27200 12300 0    10   ~ 0
-COL8
-Text Label 22850 21250 2    10   ~ 0
 COL8
 Text Label 28700 11000 0    10   ~ 0
 COL9
@@ -3473,8 +3360,6 @@ Text Label 28700 12300 0    10   ~ 0
 COL9
 Text Label 28700 18800 0    10   ~ 0
 COL9
-Text Label 22850 21350 2    10   ~ 0
-COL9
 Text Label 30200 11000 0    10   ~ 0
 COL10
 Text Label 30200 13600 0    10   ~ 0
@@ -3482,8 +3367,6 @@ COL10
 Text Label 30200 12300 0    10   ~ 0
 COL10
 Text Label 30200 17500 0    10   ~ 0
-COL10
-Text Label 22850 21450 2    10   ~ 0
 COL10
 Text Label 31700 11000 0    10   ~ 0
 COL11
@@ -3499,8 +3382,6 @@ Text Label 31700 14900 0    10   ~ 0
 COL11
 Text Label 31700 13600 0    10   ~ 0
 COL11
-Text Label 22850 21550 2    10   ~ 0
-COL11
 Text Label 33200 13600 0    10   ~ 0
 COL12
 Text Label 33200 11000 0    10   ~ 0
@@ -3512,8 +3393,6 @@ COL12
 Text Label 33200 17400 0    10   ~ 0
 COL12
 Text Label 33200 12300 0    10   ~ 0
-COL12
-Text Label 22850 21650 2    10   ~ 0
 COL12
 Text Label 34700 13600 0    10   ~ 0
 COL13
@@ -3528,8 +3407,6 @@ COL13
 Text Label 34700 16100 0    10   ~ 0
 COL13
 Text Label 34700 17400 0    10   ~ 0
-COL13
-Text Label 22850 21750 2    10   ~ 0
 COL13
 Text Label 14900 10500 2    10   ~ 0
 N$1
@@ -4009,19 +3886,11 @@ Text Label 23900 14200 2    10   ~ 0
 ROW3
 Text Label 20900 10300 2    10   ~ 0
 ROW0
-Text Label 22850 22150 2    10   ~ 0
-ROW0
 Text Label 20900 11600 2    10   ~ 0
-ROW1
-Text Label 22850 22250 2    10   ~ 0
 ROW1
 Text Label 20900 12900 2    10   ~ 0
 ROW2
-Text Label 22850 22350 2    10   ~ 0
-ROW2
 Text Label 20900 14200 2    10   ~ 0
-ROW3
-Text Label 22850 22450 2    10   ~ 0
 ROW3
 Text Label 25400 15500 2    10   ~ 0
 ROW4
@@ -4051,8 +3920,6 @@ Text Label 22400 15500 2    10   ~ 0
 ROW4
 Text Label 23900 15500 2    10   ~ 0
 ROW4
-Text Label 22850 22550 2    10   ~ 0
-ROW4
 Text Label 26900 16800 2    10   ~ 0
 ROW5
 Text Label 28400 16800 2    10   ~ 0
@@ -4079,8 +3946,6 @@ Text Label 22400 16800 2    10   ~ 0
 ROW5
 Text Label 23900 16800 2    10   ~ 0
 ROW5
-Text Label 22850 22650 2    10   ~ 0
-ROW5
 Text Label 28400 18100 2    10   ~ 0
 ROW6
 Text Label 29900 18100 2    10   ~ 0
@@ -4100,8 +3965,6 @@ ROW6
 Text Label 20900 18100 2    10   ~ 0
 ROW6
 Text Label 22400 18100 2    10   ~ 0
-ROW6
-Text Label 22850 22750 2    10   ~ 0
 ROW6
 $Comp
 L Connector:TestPoint TPCOL0
@@ -4348,52 +4211,6 @@ F 3 "~" H 14700 18100 50  0001 C CNN
 	1    14500 18100
 	1    0    0    -1  
 $EndComp
-$Comp
-L power:+3.3V #PWR0101
-U 1 1 5E0E8543
-P 24950 20550
-F 0 "#PWR0101" H 24950 20400 50  0001 C CNN
-F 1 "+3.3V" H 24965 20723 50  0000 C CNN
-F 2 "" H 24950 20550 50  0001 C CNN
-F 3 "" H 24950 20550 50  0001 C CNN
-	1    24950 20550
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:+5V #PWR0102
-U 1 1 5E0EA5B0
-P 24750 20450
-F 0 "#PWR0102" H 24750 20300 50  0001 C CNN
-F 1 "+5V" H 24765 20623 50  0000 C CNN
-F 2 "" H 24750 20450 50  0001 C CNN
-F 3 "" H 24750 20450 50  0001 C CNN
-	1    24750 20450
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:GND #PWR0103
-U 1 1 5E0EC296
-P 25000 21250
-F 0 "#PWR0103" H 25000 21000 50  0001 C CNN
-F 1 "GND" H 25005 21077 50  0000 C CNN
-F 2 "" H 25000 21250 50  0001 C CNN
-F 3 "" H 25000 21250 50  0001 C CNN
-	1    25000 21250
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	24650 20450 24750 20450
-Wire Wire Line
-	24650 20550 24950 20550
-Wire Wire Line
-	24900 20750 24650 20750
-Wire Wire Line
-	24650 21250 24900 21250
-Wire Wire Line
-	24900 21250 24900 20750
-Wire Wire Line
-	24900 21250 25000 21250
-Connection ~ 24900 21250
 Wire Wire Line
 	30200 16200 30700 16200
 Connection ~ 30700 16200
@@ -4449,4 +4266,187 @@ Wire Wire Line
 Wire Wire Line
 	26200 13600 26200 14900
 Connection ~ 26200 14900
+Connection ~ 25150 21250
+Wire Wire Line
+	25150 21250 25250 21250
+Wire Wire Line
+	25150 21250 25150 20750
+$Comp
+L power:GND #PWR0103
+U 1 1 5E0EC296
+P 25250 21250
+F 0 "#PWR0103" H 25250 21000 50  0001 C CNN
+F 1 "GND" H 25255 21077 50  0000 C CNN
+F 2 "" H 25250 21250 50  0001 C CNN
+F 3 "" H 25250 21250 50  0001 C CNN
+	1    25250 21250
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR0102
+U 1 1 5E0EA5B0
+P 25000 20450
+F 0 "#PWR0102" H 25000 20300 50  0001 C CNN
+F 1 "+5V" H 25015 20623 50  0000 C CNN
+F 2 "" H 25000 20450 50  0001 C CNN
+F 3 "" H 25000 20450 50  0001 C CNN
+	1    25000 20450
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3.3V #PWR0101
+U 1 1 5E0E8543
+P 25200 20550
+F 0 "#PWR0101" H 25200 20400 50  0001 C CNN
+F 1 "+3.3V" H 25215 20723 50  0000 C CNN
+F 2 "" H 25200 20550 50  0001 C CNN
+F 3 "" H 25200 20550 50  0001 C CNN
+	1    25200 20550
+	1    0    0    -1  
+$EndComp
+Text Label 23000 22750 2    10   ~ 0
+ROW6
+Text Label 23000 22650 2    10   ~ 0
+ROW5
+Text Label 23000 22550 2    10   ~ 0
+ROW4
+Text Label 23000 22450 2    10   ~ 0
+ROW3
+Text Label 23000 22350 2    10   ~ 0
+ROW2
+Text Label 23000 22250 2    10   ~ 0
+ROW1
+Text Label 23000 22150 2    10   ~ 0
+ROW0
+Text Label 23000 21750 2    10   ~ 0
+COL13
+Text Label 23000 21650 2    10   ~ 0
+COL12
+Text Label 23000 21550 2    10   ~ 0
+COL11
+Text Label 23000 21450 2    10   ~ 0
+COL10
+Text Label 23000 21350 2    10   ~ 0
+COL9
+Text Label 23000 21250 2    10   ~ 0
+COL8
+Text Label 23000 21150 2    10   ~ 0
+COL7
+Text Label 23000 21050 2    10   ~ 0
+COL6
+Text Label 23000 20950 2    10   ~ 0
+COL5
+Text Label 23000 20850 2    10   ~ 0
+COL4
+Text Label 23000 20750 2    10   ~ 0
+COL3
+Text Label 23000 20650 2    10   ~ 0
+COL2
+Text Label 23000 20550 2    10   ~ 0
+COL1
+Text Label 23000 20450 2    10   ~ 0
+COL0
+Text Label 22800 22834 2    65   ~ 0
+ROW6
+Text Label 22800 22734 2    65   ~ 0
+ROW5
+Text Label 22800 22634 2    65   ~ 0
+ROW4
+Text Label 22800 22534 2    65   ~ 0
+ROW3
+Text Label 22800 22434 2    65   ~ 0
+ROW2
+Text Label 22800 22334 2    65   ~ 0
+ROW1
+Text Label 22800 22234 2    65   ~ 0
+ROW0
+Text Label 22800 21834 2    65   ~ 0
+COL13
+Text Label 22800 21734 2    65   ~ 0
+COL12
+Text Label 22800 21634 2    65   ~ 0
+COL11
+Text Label 22800 21534 2    65   ~ 0
+COL10
+Text Label 22800 21434 2    65   ~ 0
+COL9
+Text Label 22800 21334 2    65   ~ 0
+COL8
+Text Label 22800 21234 2    65   ~ 0
+COL7
+Text Label 22800 21134 2    65   ~ 0
+COL6
+Text Label 22800 21034 2    65   ~ 0
+COL5
+Text Label 22800 20934 2    65   ~ 0
+COL4
+Text Label 22800 20834 2    65   ~ 0
+COL3
+Text Label 22800 20734 2    65   ~ 0
+COL2
+Text Label 22800 20634 2    65   ~ 0
+COL1
+Text Label 22800 20534 2    65   ~ 0
+COL0
+$Comp
+L Teensy_3_and_LC_Series_Boards_v1.4:TEENSY_3.1-3.2_DIL T32
+U 1 1 5F2FE323
+P 23950 21450
+F 0 "T32" H 24050 21650 45  0000 C CNN
+F 1 "TEENSY_3.1-3.2_DIL" H 24150 21200 45  0000 C CNN
+F 2 "Teensy3andLCBoards1_4:TEENSY_3.0-3.2&LC_DIL" H 23980 21600 20  0001 C CNN
+F 3 "" H 23950 21450 50  0001 C CNN
+	1    23950 21450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	22800 20450 23050 20450
+Wire Wire Line
+	22800 20550 23050 20550
+Wire Wire Line
+	22800 20650 23050 20650
+Wire Wire Line
+	22800 20750 23050 20750
+Wire Wire Line
+	22800 20850 23050 20850
+Wire Wire Line
+	22800 20950 23050 20950
+Wire Wire Line
+	22800 21050 23050 21050
+Wire Wire Line
+	22800 21150 23050 21150
+Wire Wire Line
+	22800 21250 23050 21250
+Wire Wire Line
+	22800 21350 23050 21350
+Wire Wire Line
+	22800 21450 23050 21450
+Wire Wire Line
+	22800 21550 23050 21550
+Wire Wire Line
+	22800 21650 23050 21650
+Wire Wire Line
+	22800 21750 23050 21750
+Wire Wire Line
+	22800 22150 23050 22150
+Wire Wire Line
+	22800 22250 23050 22250
+Wire Wire Line
+	22800 22350 23050 22350
+Wire Wire Line
+	22800 22450 23050 22450
+Wire Wire Line
+	22800 22550 23050 22550
+Wire Wire Line
+	22800 22650 23050 22650
+Wire Wire Line
+	22800 22750 23050 22750
+Wire Wire Line
+	24850 20550 25200 20550
+Wire Wire Line
+	24850 20450 25000 20450
+Wire Wire Line
+	24850 20750 25150 20750
+Wire Wire Line
+	24850 21250 25150 21250
 $EndSCHEMATC
