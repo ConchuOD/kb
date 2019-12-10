@@ -4346,47 +4346,47 @@ Text Label 23000 20550 2    10   ~ 0
 COL1
 Text Label 23000 20450 2    10   ~ 0
 COL0
-Text Label 22800 22834 2    65   ~ 0
+Text Label 22800 22750 2    65   ~ 0
 ROW6
-Text Label 22800 22734 2    65   ~ 0
+Text Label 22800 22650 2    65   ~ 0
 ROW5
-Text Label 22800 22634 2    65   ~ 0
+Text Label 22800 22550 2    65   ~ 0
 ROW4
-Text Label 22800 22534 2    65   ~ 0
+Text Label 22800 22450 2    65   ~ 0
 ROW3
-Text Label 22800 22434 2    65   ~ 0
+Text Label 22800 22350 2    65   ~ 0
 ROW2
-Text Label 22800 22334 2    65   ~ 0
+Text Label 22800 22250 2    65   ~ 0
 ROW1
-Text Label 22800 22234 2    65   ~ 0
+Text Label 22800 22150 2    65   ~ 0
 ROW0
-Text Label 22800 21834 2    65   ~ 0
+Text Label 22800 21750 2    65   ~ 0
 COL13
-Text Label 22800 21734 2    65   ~ 0
+Text Label 22800 21650 2    65   ~ 0
 COL12
-Text Label 22800 21634 2    65   ~ 0
+Text Label 22800 21550 2    65   ~ 0
 COL11
-Text Label 22800 21534 2    65   ~ 0
+Text Label 22800 21450 2    65   ~ 0
 COL10
-Text Label 22800 21434 2    65   ~ 0
+Text Label 22800 21350 2    65   ~ 0
 COL9
-Text Label 22800 21334 2    65   ~ 0
+Text Label 22800 21250 2    65   ~ 0
 COL8
-Text Label 22800 21234 2    65   ~ 0
+Text Label 22800 21150 2    65   ~ 0
 COL7
-Text Label 22800 21134 2    65   ~ 0
+Text Label 22800 21050 2    65   ~ 0
 COL6
-Text Label 22800 21034 2    65   ~ 0
+Text Label 22800 20950 2    65   ~ 0
 COL5
-Text Label 22800 20934 2    65   ~ 0
+Text Label 22800 20850 2    65   ~ 0
 COL4
-Text Label 22800 20834 2    65   ~ 0
+Text Label 22800 20750 2    65   ~ 0
 COL3
-Text Label 22800 20734 2    65   ~ 0
+Text Label 22800 20650 2    65   ~ 0
 COL2
-Text Label 22800 20634 2    65   ~ 0
+Text Label 22800 20550 2    65   ~ 0
 COL1
-Text Label 22800 20534 2    65   ~ 0
+Text Label 22800 20450 2    65   ~ 0
 COL0
 $Comp
 L Teensy_3_and_LC_Series_Boards_v1.4:TEENSY_3.1-3.2_DIL T32
