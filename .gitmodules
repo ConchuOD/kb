@@ -1,3 +1,4 @@
 [submodule "software/cores"]
 	path = software/cores
 	url = https://github.com/PaulStoffregen/cores.git
+	branch = master
