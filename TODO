@@ -1,0 +1,6 @@
+- Move code to linux and configure build tools
+- Fix any issues that may crop up with half arsed test code
+- Solder diodes for rows 0 & 1s
+- Solder Teensy 14x1 headers
+- Check OD outputs working as intended
+- Run tester
