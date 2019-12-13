@@ -133,6 +133,6 @@ program:
 	screen /dev/ttyACM0 115200
 
 clean:
-	rm -f */*.o */*.d $(TARGET).elf $(TARGET).hex
+	rm -f */*.o */*.d *.d *.o $(TARGET).elf $(TARGET).hex
 
 print-%  : ; @echo $* = $($*)
