@@ -34,14 +34,14 @@ TARGET = kb
 BUILDDIR = build
 MCU = MK20DX256
 
-# add RN52, SPI & TFT lib and the TFT font
-#EXTRALIBS = 
+# anything in folders local to the project
+EXTRALIBS = kb_helpers
 
 # configurable options
 OPTIONS = -DF_CPU=72000000 -DUSB_SERIAL -DLAYOUT_US_ENGLISH -DUSING_MAKEFILE
 
 # options needed by many Arduino libraries to configure for Teensy 3.x
-OPTIONS += -D__$(MCU)__  -DARDUINO=10805 -DTEENSYDUINO=141
+OPTIONS += -D__$(MCU)__  -DARDUINO=10810 -DTEENSYDUINO=148
 
 # use "cortex-m4" for Teensy 3.x
 # use "mk20dx256" for Teensy 3.2
@@ -56,18 +56,17 @@ LDFLAGS = -mcpu=cortex-m4 -T $(MCU_LD)
 # locations and edit the pathnames.  The rest of Arduino is not needed.
 #************************************************************************
 
-# normal GNU/Linux compiler path
-COMPILERPATH ?= /usr/bin/
+# compiler path
+COMPILERPATH ?= ~/teensy_tools/arm/bin/
 
 # teensy tools locations
-TOOLSPATH = $(abspath /home/conor/arduino-1.8.5/hardware/tools)
+TOOLSPATH = $(abspath ~/teensy_tools/)
 
 #************************************************************************
 # Settings below this point usually do not need to be edited
 #************************************************************************
 
 CPPLIBS += $(foreach lib,$(EXTRALIBS),-I$(lib))
-CPPLIBS += -IPictures 
 
 # CPPFLAGS = compiler options for C and C++
 CPPFLAGS += -Wall -g -Os -mthumb -MMD $(OPTIONS) -I. -I$(COREPATH) -I$(COREPATH)/avr $(CPPLIBS)
@@ -92,7 +91,7 @@ OBJCOPY = $(COMPILERPATH)/arm-none-eabi-objcopy
 SIZE = $(COMPILERPATH)/arm-none-eabi-size
 
 # automatically create lists of the sources and objects
-CXX_FILES = BTS.cpp
+CXX_FILES = $(shell pwd)/$(TARGET).cpp
 
 # adding teensy cores
 CXX_FILES += $(filter-out $(COREPATH)/main.cpp, $(wildcard $(COREPATH)/*.cpp))
@@ -134,6 +133,6 @@ program:
 	screen /dev/ttyACM0 115200
 
 clean:
-	rm -f *.o *.d $(TARGET).elf $(TARGET).hex
+	rm -f */*.o */*.d $(TARGET).elf $(TARGET).hex
 
 print-%  : ; @echo $* = $($*)

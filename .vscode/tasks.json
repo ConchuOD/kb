@@ -6,7 +6,7 @@
         {
             "label": "echo",
             "type": "shell",
-            "command": "echo Hello",
+            "command": "cd software && make clean && make",
             "group": {
                 "kind": "build",
                 "isDefault": true

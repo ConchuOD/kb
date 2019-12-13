@@ -4,6 +4,10 @@
 //#include "keyboard.h"
 #include "tester.h"
 #include "kb_matrix.h"
+#ifdef DEBUG
+#include <HardwareSerial.h>
+#endif /* DEBUG */
+#include <Arduino.h>
 
 /* defines */
 #define SERIAL_BAUD_RATE 115200

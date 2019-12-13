@@ -1,6 +1,9 @@
 #ifndef KB_MATRIX_H_
 #define KB_MATRIX_H_
 
+#include "kinetis.h"
+#include <Arduino.h>
+
 #define COL0_PIN  = 0
 #define COL1_PIN  = 1
 #define COL2_PIN  = 2
@@ -14,7 +17,7 @@
 #define COL10_PIN = 10
 #define COL11_PIN = 11
 #define COL12_PIN = 12
-#define COL12_PIN = 13
+#define COL13_PIN = 13
 
 #define ROW0_PIN  = 17
 #define ROW1_PIN  = 18
@@ -27,17 +30,6 @@
 #define NUM_ROWS 7
 #define NUM_COLS 14
 
-void setup_teensy_ports(void)
-{
-    uint8_t row_inc, col_inc;
-    for (row_inc = 0; row_inc < NUM_ROWS; row_inc++)
-    {
-        pinMode(row_inc, INPUT_PULLUP);
-    }
-    for (col_inc = 0; col_inc < NUM_COLS; col_inc++)
-    {
-        pinMode(col_inc, OUTPUT_OPENDRAIN);
-    }
-}
+void setup_teensy_ports(void);
 
 #endif /* KB_MATRIX_H_ */
