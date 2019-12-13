@@ -76,7 +76,7 @@ CPPFLAGS += -Wall -g -Os -mthumb -MMD $(OPTIONS) -I. -I$(COREPATH) -I$(COREPATH)
 CXXFLAGS += -std=gnu++14 -felide-constructors -fno-exceptions -fno-rtti
 
 # compiler options for C only
-CFLAGS +=
+CFLAGS += -std=c11
 
 # linker options
 LDFLAGS += -Os -Wl,--gc-sections,--defsym=__rtc_localtime=0 --specs=nano.specs -mthumb
