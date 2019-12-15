@@ -57,10 +57,10 @@ LDFLAGS = -mcpu=cortex-m4 -T $(MCU_LD)
 #************************************************************************
 
 # compiler path
-COMPILERPATH ?= ~/teensy_tools/arm/bin/
+COMPILERPATH ?= /home/conor/teensy_tools/arm/bin
 
 # teensy tools locations
-TOOLSPATH = $(abspath ~/teensy_tools/)
+TOOLSPATH = /home/conor/teensy_tools
 
 #************************************************************************
 # Settings below this point usually do not need to be edited

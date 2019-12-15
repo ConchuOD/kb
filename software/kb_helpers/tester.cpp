@@ -8,18 +8,29 @@ void keyboard_matrix_test(void)
 {
     uint8_t row_inc, col_inc;
     uint8_t keyboard_matrix[NUM_COLS][NUM_ROWS];
+    for (col_inc = 0; col_inc < NUM_COLS; col_inc++)
+    {
+        for (row_inc = 0; row_inc < NUM_ROWS; row_inc++)
+        {
+            keyboard_matrix[col_inc][row_inc] = LOW;
+        }
+    }
+
+    Serial.print("Now testing keyboard matrix\r\n");
+
     for(;/*ever*/;)
     {
         for (col_inc = 0; col_inc < NUM_COLS; col_inc++)
         {
-            digitalWrite(col_inc, LOW); // short to ground
+            digitalWriteFast(COL0_PIN+col_inc, LOW); // short to ground
             for (row_inc = 0; row_inc < NUM_ROWS; row_inc++)
             {
-                keyboard_matrix[col_inc][row_inc] = digitalRead(row_inc);
+                keyboard_matrix[col_inc][row_inc] += (!digitalRead(ROW0_PIN+row_inc));
             }
-            digitalWrite(col_inc, HIGH); // high Z
+            digitalWriteFast(COL0_PIN+col_inc, HIGH); // high Z
+            delay(20);
         }
-        delay(1000 * 1000); // wait one second
+        delay(100); // wait
         print_matrix_to_console(&keyboard_matrix);
     }
 }
@@ -28,14 +39,15 @@ void print_matrix_to_console(uint8_t (*keyboard_matrix)[NUM_COLS][NUM_ROWS])
 {
     uint8_t row_inc, col_inc;
     uint8_t pressed;
-    for (col_inc = 0; col_inc < NUM_COLS; col_inc++)
+    Serial.print("Current status:\r\n");
+    for (row_inc = 0; row_inc < NUM_ROWS; row_inc++)
     {
-        Serial.print("| ");
-        for (row_inc = 0; row_inc < NUM_ROWS; row_inc++)
+        for (col_inc = 0; col_inc < NUM_COLS; col_inc++)
         {
+            Serial.print("| ");
             pressed = (*keyboard_matrix)[col_inc][row_inc];
             Serial.print(pressed);
         }
-        Serial.print("\n");
+        Serial.print("\r\n");
     }
 }
