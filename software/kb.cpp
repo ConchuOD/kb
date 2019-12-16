@@ -22,13 +22,6 @@ int main(void)
     Serial.println("Starting program");
 #endif /* DEBUG */
     setup_teensy_ports(); // set up GPIOs for keyboard matrix
-    // digitalWrite(COL0_PIN,0);
-    // while(1)
-    // {
-    //     uint8_t x = digitalRead(ROW0_PIN);
-    //     Serial.println(x);
-    //     delay(100);
-    // }
 
     keyboard_matrix_test();
 }
