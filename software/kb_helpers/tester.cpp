@@ -41,18 +41,18 @@ void print_matrix_to_console(uint8_t (*keyboard_matrix)[NUM_COLS][NUM_ROWS])
 {
     uint8_t row_inc, col_inc;
     uint8_t pressed, debounce;
-    Serial.print("Current status:\r\n");
     uint8_t mask = 255;
 
     for (row_inc = 0; row_inc < NUM_ROWS; row_inc++)
     {
         for (col_inc = 0; col_inc < NUM_COLS; col_inc++)
         {
-            Serial.print("| ");
             debounce = (*keyboard_matrix)[col_inc][row_inc] & mask;
             pressed = debounce == mask;
-            Serial.print(pressed);
+            if(pressed)
+            {
+                Serial.write(matrix_to_unicode[col_inc * NUM_ROWS + row_inc]);
+            }
         }
-        Serial.print("\r\n");
     }
 }
