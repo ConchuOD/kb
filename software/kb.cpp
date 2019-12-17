@@ -1,12 +1,7 @@
-#define DEBUG 1
-
 /* includes */
 //#include "keyboard.h"
 #include "tester.h"
 #include "kb_matrix.h"
-#ifdef DEBUG
-#include <HardwareSerial.h>
-#endif /* DEBUG */
 #include <Arduino.h>
 
 /* defines */
@@ -16,11 +11,11 @@ int main(void)
 {
     /* Setup code */
     sei(); // enable interupts
-#ifdef DEBUG
+#ifdef USB_SERIAL
     Serial.begin(SERIAL_BAUD_RATE); // enable USB serial for tests
     while (!Serial){}
     Serial.println("Starting program");
-#endif /* DEBUG */
+#endif /* USB_SERIAL */
     setup_teensy_ports(); // set up GPIOs for keyboard matrix
 
     keyboard_matrix_test();

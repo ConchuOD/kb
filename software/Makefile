@@ -2,7 +2,7 @@
 # http://www.pjrc.com/teensy
 # Copyright (c) 2017 PJRC.COM, LLC.
 #
-# Modified for custom keyboard 2019.
+# Modified for custom keyboard 2019, github.com/ConchuOD.
 #
 # Permission is hereby granted, free of charge, to any person obtaining
 # a copy of this software and associated documentation files (the
@@ -29,6 +29,10 @@
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+# extra flags
+USER_DEFINES = -DUSB_KEYBOARDONLY
+#-DUSB_SERIAL -DDEBUG 
+
 # the name of the project
 TARGET = kb
 BUILDDIR = build
@@ -38,7 +42,7 @@ MCU = MK20DX256
 EXTRALIBS = kb_helpers
 
 # configurable options
-OPTIONS = -DF_CPU=72000000 -DUSB_SERIAL -DLAYOUT_US_ENGLISH -DUSING_MAKEFILE
+OPTIONS = -DF_CPU=72000000 -DLAYOUT_US_ENGLISH $(USER_DEFINES)
 
 # options needed by many Arduino libraries to configure for Teensy 3.x
 OPTIONS += -D__$(MCU)__  -DARDUINO=10810 -DTEENSYDUINO=148
@@ -104,6 +108,8 @@ A_FILES += $(wildcard $(COREPATH)/*.S)
 # add obj names
 OBJS := $(C_FILES:.c=.o) $(CXX_FILES:.cpp=.o) $(A_FILES:.S=.o)
 
+CLEAN_TARGETS = */*.o */*.d *.d *.o $(TARGET).elf $(TARGET).hex $(corepath)/*.o $(corepath)/*.d 
+
 #************************************************************************
 # PJRC Make section - implicit rules.
 #************************************************************************
@@ -133,6 +139,6 @@ program:
 	screen /dev/ttyACM0 115200
 
 clean:
-	rm -f */*.o */*.d *.d *.o $(TARGET).elf $(TARGET).hex
+	rm -f $(CLEAN_TARGETS)
 
 print-%  : ; @echo $* = $($*)
