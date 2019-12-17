@@ -51,7 +51,7 @@ void print_matrix_to_console(uint8_t (*keyboard_matrix)[NUM_COLS][NUM_ROWS])
             pressed = debounce == mask;
             if(pressed)
             {
-                Serial.write(matrix_to_unicode[col_inc * NUM_ROWS + row_inc]);
+                Serial.print(matrix_to_keycode[col_inc * NUM_ROWS + row_inc]);
             }
         }
     }

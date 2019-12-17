@@ -1,8 +1,9 @@
 #ifndef KB_MATRIX_H_
 #define KB_MATRIX_H_
 
-#include "kinetis.h"
+#include <kinetis.h>
 #include <Arduino.h>
+#include "keycodes.h"
 
 #define COL0_PIN  0
 #define COL1_PIN  1
@@ -30,105 +31,21 @@
 #define NUM_ROWS  7
 #define NUM_COLS  14
 
-static const uint16_t matrix_to_unicode[NUM_ROWS*NUM_COLS] = {
-    0x23,   //ESC col0
-    0x31,   //1
-    0x60,   //backtick
-    0x09,   //TAB
-    0x23,   //CAPS
-    0x23,   //LSHIFT
-    0x23,   //LCTRL
-    0x23,   //F1 col1
-    0x32,   //2
-    0x77,   //w
-    0x71,   //q
-    0x61,   //a
-    0x5C,   //BLSH
-    0x23,   //LOS
-    0x23,   //F2 col2
-    0x33,   //3
-    0x65,   //e
-    0x73,   //s
-    0x7A,   //z
-    0x78,   //x
-    0x23,   //LALT
-    0x23,   //F3 col2
-    0x34,   //4
-    0x72,   //r
-    0x64,   //d
-    0x66,   //f
-    0x63,   //c
-    0x20,   //space
-    0x23,   //F4 col3
-    0x35,   //5
-    0x36,   //6
-    0x74,   //t
-    0x67,   //g
-    0x76,   //v
-    0x62,   //b
-    0x23,   //F5 col4
-    0x37,   //7
-    0x79,   //y
-    0x75,   //u
-    0x68,   //h
-    0x6A,   //j
-    0x6E,   //n
-    0x23,   //F6 col7
-    0x23,   //F7
-    0x38,   //8
-    0x69,   //i
-    0x6B,   //k
-    0x6D,   //m
-    0x00,   //UNREACHABLE
-    0x23,   //F8 col8
-    0x39,   //9
-    0x6F,   //o
-    0x6C,   //l
-    0x2C,   //,
-    0x00,   //UNREACHABLE
-    0x00,   //UNREACHABLE
-    0x23,   //F9 col9
-    0x30,   //zero
-    0x70,   //p
-    0x3B,   //;
-    0x2E,   //.
-    0x23,   //RALT
-    0x23,   //UNREACHABLE
-    0x23,   //F10 col10
-    0x2D,   //-
-    0x5B,   //[
-    0x27,   //'
-    0x2F,   ///
-    0x23,   //ROS
-    0x23,   //FN
-    0x23,   //F11 col11
-    0x3D,   //=
-    0x5D,   //]
-    0x23,   //enter
-    0x23,   //#
-    0x23,   //RSHIFT
-    0x23,   //RCTRL
-    0x23,   //F12 col12
-    0x23,   //backspace
-    0x23,   //numlock
-    0x37,   //7
-    0x34,   //4
-    0x31,   //1
-    0x30,   //zero
-    0x2A,   //*
-    0x2F,   ///
-    0x38,   //8
-    0x35,   //5
-    0x32,   //2
-    0x23,   //zero zero
-    0x23,   //
-    0x2D,   //-
-    0x2B,   //+
-    0x39,   //9
-    0x36,   //6
-    0x33,   //3
-    0x23,   //enter
-    0x3B   //.
+static const uint16_t matrix_to_keycode[NUM_ROWS * NUM_COLS] = {
+    KC_ESC,   KC_ONE,   KC_BTK,   KC_TAB,    KC_CAPS,  KC_LSHFT, KC_LCTRL,
+    KC_F1,    KC_TWO,   KC_W,     KC_Q,      KC_A,     KC_BSLH,  KC_LOS,
+    KC_F2,    KC_THREE, KC_E,     KC_S,      KC_Z,     KC_X,     KC_LALT,
+    KC_F3,    KC_FOUR,  KC_R,     KC_D,      KC_F,     KC_C,     KC_SPACE,
+    KC_F4,    KC_FIVE,  KC_SIX,   KC_T,      KC_G,     KC_V,     KC_B,
+    KC_F5,    KC_SEVEN, KC_Y,     KC_U,      KC_H,     KC_J,     KC_N,
+    KC_F6,    KC_F7,    KC_EIGHT, KC_I,      KC_K,     KC_M,     0,
+    KC_F8,    KC_NINE,  KC_O,     KC_L,      KC_COMMA, 0,        0,
+    KC_F9,    KC_ZERO,  KC_P,     KC_SCOLON, KC_DOT,   KC_RALT,  0,
+    KC_F10,   KC_MINUS, KC_LSB,   KC_TICK,   KC_FSLSH, KC_ROS,   KC_RCTRL,
+    KC_F11,   KC_EQUAL, KC_RSB,   KC_ENTER,  KC_HASH,  KC_RSHFT, KC_RCTRL,
+    KC_F12,   KC_BKSP,  KC_NUMLK, KC_N7,     KC_N4,    KC_N1,    KC_N0,
+    KC_NSTAR, KC_NSLSH, KC_N8,    KC_N5,     KC_N2,    KC_N0,    0,
+    KC_NINUS, KC_NPLUS, KC_N9,    KC_N6,     KC_N3,    KC_NNTER, KC_NDOT
 };
 
 void setup_teensy_ports(void);
