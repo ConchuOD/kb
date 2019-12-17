@@ -108,7 +108,7 @@ A_FILES += $(wildcard $(COREPATH)/*.S)
 # add obj names
 OBJS := $(C_FILES:.c=.o) $(CXX_FILES:.cpp=.o) $(A_FILES:.S=.o)
 
-CLEAN_TARGETS = */*.o */*.d *.d *.o $(TARGET).elf $(TARGET).hex $(corepath)/*.o $(corepath)/*.d 
+CLEAN_TARGETS = */*.o */*.d *.d *.o $(TARGET).elf $(TARGET).hex $(COREPATH)/*.o $(COREPATH)/*.d 
 
 #************************************************************************
 # PJRC Make section - implicit rules.
