@@ -3,6 +3,7 @@
 #include "tester.h"
 #include "kb_matrix.h"
 #include <Arduino.h>
+#include "usb_keyboard.h"
 
 /* defines */
 #define SERIAL_BAUD_RATE 115200
@@ -16,8 +17,8 @@ int main(void)
     while (!Serial){}
     Serial.println("Starting program");
 #endif /* USB_SERIAL */
+    Keyboard.begin();
     setup_teensy_ports(); // set up GPIOs for keyboard matrix
-
     keyboard_matrix_test();
 }
 
