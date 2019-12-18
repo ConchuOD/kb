@@ -30,8 +30,9 @@
 # SOFTWARE.
 
 # extra flags
-USER_DEFINES = -DUSB_KEYBOARDONLY
-#-DUSB_SERIAL -DDEBUG 
+USER_DEFINES = -DUSB_KEYBOARDONLY 
+# -DUSB_KEYBOARDONLY
+# -DUSB_SERIAL -DDEBUG 
 
 # the name of the project
 TARGET = kb
@@ -99,7 +100,7 @@ CXX_FILES = $(shell pwd)/$(TARGET).cpp
 
 # adding teensy cores
 CXX_FILES += $(filter-out $(COREPATH)/main.cpp, $(wildcard $(COREPATH)/*.cpp))
-C_FILES = $(wildcard $(COREPATH)/*.c)
+C_FILES += $(filter-out $(COREPATH)/usb_keyboard.c, $(wildcard $(COREPATH)/*.c))
 
 # add RN52, SPI & TFT lib and the TFT font
 CXX_FILES += $(foreach lib,$(EXTRALIBS),$(wildcard $(lib)/*.cpp))
@@ -108,7 +109,7 @@ A_FILES += $(wildcard $(COREPATH)/*.S)
 # add obj names
 OBJS := $(C_FILES:.c=.o) $(CXX_FILES:.cpp=.o) $(A_FILES:.S=.o)
 
-CLEAN_TARGETS = */*.o */*.d *.d *.o $(TARGET).elf $(TARGET).hex $(COREPATH)/*.o $(corepath)/*.d 
+CLEAN_TARGETS = */*.o */*.d *.d *.o $(TARGET).elf $(TARGET).hex $(COREPATH)/*.o $(COREPATH)/*.d 
 
 #************************************************************************
 # PJRC Make section - implicit rules.

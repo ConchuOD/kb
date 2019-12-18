@@ -1,6 +1,5 @@
 /* Required libraries */
 #include <Arduino.h>
-#include <HardwareSerial.h>
 #include "tester.h"
 #include "kb_matrix.h"
 
@@ -51,7 +50,10 @@ void print_matrix_to_console(uint8_t (*keyboard_matrix)[NUM_COLS][NUM_ROWS])
             pressed = debounce == mask;
             if(pressed)
             {
-                Keyboard.write(0x04);
+#ifndef USB_SERIAL
+                Keyboard.write_unicode(120);
+                // Keyboard.write_unicode(matrix_to_keycode[col_inc * NUM_ROWS + row_inc]);
+#endif /* USB_SERIAL */
 #ifdef USB_SERIAL
                 Serial.print(matrix_to_keycode[col_inc * NUM_ROWS + row_inc]);
 #endif /* USB_SERIAL */
