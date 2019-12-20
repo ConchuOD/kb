@@ -74,11 +74,11 @@ class usb_keyboard_class : public Print
 public:
 	void begin(void) { }
 	void end(void) { }
-	virtual size_t write(uint8_t c) { return 0 }
-        size_t write(unsigned long n) { return 0 }
-        size_t write(long n) { return 0 }
-        size_t write(unsigned int n) { return 0 }
-        size_t write(int n) { return 0 }
+	virtual size_t write(uint8_t c) { return 0; }
+        size_t write(unsigned long n) { return 0; }
+        size_t write(long n) { return 0; }
+        size_t write(unsigned int n) { return 0; }
+        size_t write(int n) { return 0; }
 	using Print::write;
 	void write_unicode(uint16_t n) { }
 	void write_custom(uint16_t n) { usb_keyboard_write_custom(n); }
