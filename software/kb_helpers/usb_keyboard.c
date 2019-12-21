@@ -34,6 +34,7 @@
 #include "keylayouts.h"
 #include <string.h> // for memcpy()
 #include "keycodes.h"
+#include "Arduino.h"
 
 #ifdef KEYBOARD_INTERFACE // defined by usb_dev.h -> usb_desc.h
 #if F_CPU >= 20000000
@@ -70,137 +71,109 @@ uint8_t keyboard_idle_count=0;
 // 1=num lock, 2=caps lock, 4=scroll lock, 8=compose, 16=kana
 volatile uint8_t keyboard_leds=0;
 
-static void write_key(KEYCODE_TYPE keycode);
-static uint8_t keycode_to_modifier(KEYCODE_TYPE keycode);
-static uint8_t keycode_to_key(KEYCODE_TYPE keycode);
-static void usb_keyboard_press_key(uint8_t key, uint8_t modifier);
-static void usb_keyboard_release_key(uint8_t key, uint8_t modifier);
+volatile uint8_t async_send_required = 0;
 
-void usb_keyboard_write_custom(uint16_t cpoint)
+static uint8_t usb_keyboard_press_key(uint8_t key, uint8_t modifier);
+static uint8_t usb_keyboard_release_key(uint8_t key, uint8_t modifier);
+static uint8_t keycode_to_modifier(uint16_t raw_key_code);
+
+uint8_t keycode_to_modifier(uint16_t raw_key_code)
 {
-    KEYCODE_TYPE keycode;
-    uint8_t modifier, shift_by = 0;
+    uint8_t modifier = 0, shift_by = 0, mod_flag = 0;
 
-    switch (cpoint)
+    switch (raw_key_code)
     {
-        case KC_LCTRL:
-            shift_by = LCTRL_POS;
-        case KC_LSHFT:
-            shift_by = LSHFT_POS;
-        case KC_LALT:
-            shift_by = LALT_POS;
-        case KC_LOS:
-            shift_by = LOS_POS;
-        case KC_RCTRL:
-            shift_by = RCTRL_POS;
-        case KC_RSHFT:
-            shift_by = RSHFT_POS;
-        case KC_RALT:
-            shift_by = RALT_POS;
-        case KC_ROS:
-            shift_by = ROS_POS;
+    case KC_LCTRL:
+        shift_by = LCTRL_POS;
+        mod_flag = 1;
+        break;
+    case KC_LSHFT:
+        shift_by = LSHFT_POS;
+        mod_flag = 1;
+        break;
+    case KC_LALT:
+        shift_by = LALT_POS;
+        mod_flag = 1;
+        break;
+    case KC_LOS:
+        shift_by = LOS_POS;
+        mod_flag = 1;
+        break;
+    case KC_RCTRL:
+        shift_by = RCTRL_POS;
+        mod_flag = 1;
+        break;
+    case KC_RSHFT:
+        shift_by = RSHFT_POS;
+        mod_flag = 1;
+        break;
+    case KC_RALT:
+        shift_by = RALT_POS;
+        mod_flag = 1;
+        break;
+    case KC_ROS:
+        shift_by = ROS_POS;
+        mod_flag = 1;
+        break;
     }
 
-    modifier = 1UL << shift_by;
+    if (mod_flag)
+    {
+        modifier = 1UL << shift_by;
+    }
+}
+
+void usb_keyboard_press_custom(uint16_t raw_key_code)
+{
+    KEYCODE_TYPE keycode;
+    uint8_t modifier = 0, mod_flag = 0;
+    uint8_t send_required = 0;
+
+    modifier =  keycode_to_modifier(raw_key_code);
+
+    if (modifier)
+    {
+        keycode = 0;
+    }
+    {
+        keycode = (KEYCODE_TYPE) raw_key_code;
+    }
     
-    keycode = (KEYCODE_TYPE)cpoint;
+    if (keycode || modifier)
+    {
+        send_required = usb_keyboard_press_key(keycode, modifier);
+        cli();
+        async_send_required = send_required;
+        sei();
+    }
+}
+
+void usb_keyboard_release_custom(uint16_t raw_key_code)
+{
+    KEYCODE_TYPE keycode;
+    uint8_t modifier = 0, mod_flag = 0;
+    uint8_t send_required = 0;
+
+    modifier = keycode_to_modifier(raw_key_code);
+
+    if (modifier)
+    {
+        keycode = 0;
+    }
+    {
+        keycode = (KEYCODE_TYPE)raw_key_code;
+    }
 
     if (keycode || modifier)
     {
-        usb_keyboard_press(keycode, modifier);
+        send_required = usb_keyboard_release_key(keycode, modifier);
+        cli();
+        async_send_required = send_required;
+        sei();
     }
 }
 
-static uint8_t keycode_to_modifier(KEYCODE_TYPE keycode)
-{
-    uint8_t modifier=0;
-
-    // #ifdef SHIFT_MASK
-    // if (keycode & SHIFT_MASK) modifier |= MODIFIERKEY_SHIFT;
-    // #endif
-    // #ifdef ALTGR_MASK
-    // if (keycode & ALTGR_MASK) modifier |= MODIFIERKEY_RIGHT_ALT;
-    // #endif
-    // #ifdef RCTRL_MASK
-    // if (keycode & RCTRL_MASK) modifier |= MODIFIERKEY_RIGHT_CTRL;
-    // #endif
-    modifier |= MODIFIERKEY_SHIFT;
-    return modifier;
-}
-
-static uint8_t keycode_to_key(KEYCODE_TYPE keycode)
-{
-    uint8_t key = keycode & 0x3F;
-    #ifdef KEY_NON_US_100
-    if (key == KEY_NON_US_100) key = 100;
-    #endif
-    return key;
-}
-
-
-// Input can be:
-//     32 - 127     ASCII direct (U+0020 to U+007F) <-- uses layout
-//    128 - 0xC1FF  Unicode direct (U+0080 to U+C1FF) <-- uses layout
-// 0xC200 - 0xDFFF  Unicode UTF8 packed (U+0080 to U+07FF) <-- uses layout
-// 0xE000 - 0xE0FF  Modifier key (bitmap, 8 keys, shift/ctrl/alt/gui)
-// 0xE200 - 0xE2FF  System key (HID usage code, within usage page 1)
-// 0xE400 - 0xE7FF  Media/Consumer key (HID usage code, within usage page 12)
-// 0xF000 - 0xFFFF  Normal key (HID usage code, within usage page 7)
-
-void usb_keyboard_press_keycode(uint16_t n)
-{
-    uint8_t key, mod, msb, modrestore=0;
-    KEYCODE_TYPE keycode;
-
-    msb = n >> 8;
-
-    if (msb >= 0xC2) {
-        if (msb <= 0xDF) {
-            n = (n & 0x3F) | ((uint16_t)(msb & 0x1F) << 6);
-        } else if (msb == 0xF0) {
-            usb_keyboard_press_key(n, 0);
-            return;
-        } else if (msb == 0xE0) {
-            usb_keyboard_press_key(0, n);
-            return;
-        } else {
-            return;
-        }
-    }
-    if (!keycode) return;
-    mod = keycode_to_modifier(keycode);
-    key = keycode_to_key(keycode);
-    usb_keyboard_press_key(key, mod | modrestore);
-}
-
-
-void usb_keyboard_release_keycode(uint16_t n)
-{
-    uint8_t key, mod, msb;
-
-    msb = n >> 8;
-    if (msb >= 0xC2) {
-        if (msb <= 0xDF) {
-            n = (n & 0x3F) | ((uint16_t)(msb & 0x1F) << 6);
-        } else if (msb == 0xF0) {
-            usb_keyboard_release_key(n, 0);
-            return;
-        } else if (msb == 0xE0) {
-            usb_keyboard_release_key(0, n);
-            return;
-        } else {
-            return;
-        }
-    }
-    // KEYCODE_TYPE keycode = unicode_to_keycode(n);
-    // if (!keycode) return;
-    // mod = keycode_to_modifier(keycode);
-    // key = keycode_to_key(keycode);
-    // usb_keyboard_release_key(key, mod);
-}
-
-
-static void usb_keyboard_press_key(uint8_t key, uint8_t modifier)
+static uint8_t usb_keyboard_press_key(uint8_t key, uint8_t modifier)
 {
     int i, send_required = 0;
 
@@ -223,11 +196,10 @@ static void usb_keyboard_press_key(uint8_t key, uint8_t modifier)
         }
     }
     end:
-    if (send_required) usb_keyboard_send();
+    return send_required;
 }
 
-
-static void usb_keyboard_release_key(uint8_t key, uint8_t modifier)
+static uint8_t usb_keyboard_release_key(uint8_t key, uint8_t modifier)
 {
     int i, send_required = 0;
 
@@ -245,7 +217,8 @@ static void usb_keyboard_release_key(uint8_t key, uint8_t modifier)
             }
         }
     }
-    if (send_required) usb_keyboard_send();
+
+    return send_required;
 }
 
 void usb_keyboard_release_all(void)

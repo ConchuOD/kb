@@ -43,17 +43,11 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-void usb_keyboard_write(uint8_t c);
-void usb_keyboard_write_unicode(uint16_t cpoint);
-void usb_keyboard_write_custom(uint16_t cpoint);
-void usb_keyboard_press_keycode(uint16_t n);
-void usb_keyboard_release_keycode(uint16_t n);
+void usb_keyboard_press_custom(uint16_t cpoint);
+void usb_keyboard_release_custom(uint16_t cpoint);
 void usb_keyboard_release_all(void);
 int usb_keyboard_press(uint8_t key, uint8_t modifier);
 int usb_keyboard_send(void);
-#ifdef KEYMEDIA_INTERFACE
-void usb_keymedia_release_all(void);
-#endif
 extern uint8_t keyboard_modifier_keys;
 extern uint8_t keyboard_keys[6];
 extern uint8_t keyboard_protocol;
@@ -81,7 +75,8 @@ public:
         size_t write(int n) { return 0; }
 	using Print::write;
 	void write_unicode(uint16_t n) { }
-	void write_custom(uint16_t n) { usb_keyboard_write_custom(n); }
+	void press_custom(uint16_t n) { usb_keyboard_press_custom(n); }
+	void release_custom(uint16_t n) { usb_keyboard_release_custom(n); }
 	void set_modifier(uint16_t c) { keyboard_modifier_keys = (uint8_t)c; }
 	void set_key1(uint8_t c) { keyboard_keys[0] = c; }
 	void set_key2(uint8_t c) { keyboard_keys[1] = c; }
@@ -89,19 +84,10 @@ public:
 	void set_key4(uint8_t c) { keyboard_keys[3] = c; }
 	void set_key5(uint8_t c) { keyboard_keys[4] = c; }
 	void set_key6(uint8_t c) { keyboard_keys[5] = c; }
-#ifdef KEYMEDIA_INTERFACE
-	void set_media(uint16_t c) {
-		if (c == 0) {
-			usb_keymedia_release_all();
-		} else if (c >= 0xE400 && c <= 0xE7FF) {
-			press(c);
-		}
-	}
-#endif
 	void send_now(void) { usb_keyboard_send(); }
-	void press(uint16_t n) { usb_keyboard_press_keycode(n); }
-	void release(uint16_t n) { usb_keyboard_release_keycode(n); }
-	void releaseAll(void) { usb_keyboard_release_all(); }
+	void press(uint16_t n) { }
+	void release(uint16_t n) { }
+	void releaseAll(void) { }
 };
 
 extern usb_keyboard_class Keyboard;

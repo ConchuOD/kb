@@ -74,7 +74,7 @@ TOOLSPATH = /home/conor/teensy_tools
 CPPLIBS += $(foreach lib,$(EXTRALIBS),-I$(lib))
 
 # CPPFLAGS = compiler options for C and C++
-CPPFLAGS += -Wall -g -Os -mthumb -MMD $(OPTIONS) -I. -I$(COREPATH) -I$(COREPATH)/avr $(CPPLIBS)
+CPPFLAGS += -Wall -g -Os -mthumb -MMD $(OPTIONS) -I. $(CPPLIBS) -I$(COREPATH) -I$(COREPATH)/avr
 
 
 # compiler options for C++ only
