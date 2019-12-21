@@ -34,8 +34,10 @@ int main(void)
         }
     }
 
+    Keyboard.setup_custom();
+
     /* Main loop */
-    for (;/*ever*/;)
+    for (; /*ever*/;)
     {
         for (col_inc = 0; col_inc < NUM_COLS; col_inc++)
         {
@@ -68,8 +70,8 @@ int main(void)
                 }
             }
         }
-        
-        Keyboard.send_now();
+
+        //Keyboard.send_now();
     }
 }
 

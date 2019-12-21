@@ -77,6 +77,7 @@ static uint8_t usb_keyboard_press_key(uint8_t key, uint8_t modifier);
 static uint8_t usb_keyboard_release_key(uint8_t key, uint8_t modifier);
 static uint8_t keycode_to_modifier(uint16_t raw_key_code);
 
+
 uint8_t keycode_to_modifier(uint16_t raw_key_code)
 {
     uint8_t modifier = 0, shift_by = 0, mod_flag = 0;
@@ -286,6 +287,38 @@ static uint8_t transmit_previous_timeout=0;
   #define TX_TIMEOUT (TX_TIMEOUT_MSEC * 262)
 #endif
 
+// send the contents of keyboard_keys and keyboard_modifier_keys
+void usb_keyboard_send_custom(void)
+{
+    uint32_t wait_count = 0;
+    usb_packet_t *tx_packet;
+
+    while (1)
+    {
+        if (!usb_configuration)
+        {
+            return -1;
+        }
+        if (usb_tx_packet_count(KEYBOARD_ENDPOINT) < TX_PACKET_LIMIT)
+        {
+            tx_packet = usb_malloc();
+            if (tx_packet)
+                break;
+        }
+        if (++wait_count > TX_TIMEOUT || transmit_previous_timeout)
+        {
+            transmit_previous_timeout = 1;
+            return -1;
+        }
+        yield();
+    }
+    *(tx_packet->buf) = keyboard_modifier_keys;
+    *(tx_packet->buf + 1) = 0;
+    memcpy(tx_packet->buf + 2, keyboard_keys, 6);
+    tx_packet->len = 8;
+    usb_tx(KEYBOARD_ENDPOINT, tx_packet);
+
+}
 
 // send the contents of keyboard_keys and keyboard_modifier_keys
 int usb_keyboard_send(void)
