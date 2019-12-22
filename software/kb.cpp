@@ -47,10 +47,10 @@ int main(void)
                 //debounce for n cycles
                 keyboard_matrix[col_inc][row_inc] <<= 1UL;
                 keyboard_matrix[col_inc][row_inc] |= (!digitalRead(ROW0_PIN + row_inc));
-            }
+            } // row increment
             digitalWriteFast(COL0_PIN + col_inc, HIGH); // high Z
             delayMicroseconds(10);
-        }
+        } // column increment
 
         for (row_inc = 0; row_inc < NUM_ROWS; row_inc++)
         {
@@ -68,10 +68,8 @@ int main(void)
                 {
                     Keyboard.release_custom(matrix_to_keycode[col_inc * NUM_ROWS + row_inc]);
                 }
-            }
-        }
-
-        //Keyboard.send_now();
-    }
-}
+            } // row increment
+        } // column increment
+    } // for ever
+} // main
 
