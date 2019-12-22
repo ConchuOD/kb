@@ -42,7 +42,7 @@
 // which modifier keys are currently pressed
 // 1=left ctrl,	   2=left shift,   4=left alt,	  8=left gui
 // 16=right ctrl, 32=right shift, 64=right alt, 128=right gui
-uint8_t g_keyboard_modifier_keys=0;
+uint8_t g_keyboard_modifier_keys = 0;
 
 #define LCTRL_POS 0
 #define LSHFT_POS 1
@@ -53,7 +53,7 @@ uint8_t g_keyboard_modifier_keys=0;
 #define RALT_POS  6
 #define ROS_POS   7
 
-#define MKRO 20
+#define MKRO           6
 #define STATIC_INIT_1  0,
 #define STATIC_INIT_2  STATIC_INIT_1 STATIC_INIT_1
 #define STATIC_INIT_4  STATIC_INIT_2 STATIC_INIT_2
@@ -61,29 +61,28 @@ uint8_t g_keyboard_modifier_keys=0;
 #define STATIC_INIT_16 STATIC_INIT_8 STATIC_INIT_8
 
 // which keys are currently pressed, up to 6 keys may be down at once
-uint8_t g_keyboard_keys[MKRO] = {STATIC_INIT_16 STATIC_INIT_4};
+uint8_t g_keyboard_keys[MKRO] = {STATIC_INIT_4 STATIC_INIT_2};
 
 // protocol setting from the host.  We use exactly the same report
 // either way, so this variable only stores the setting since we
 // are required to be able to report which setting is in use.
-uint8_t keyboard_protocol=1;
+uint8_t keyboard_protocol = 1;
 
 // the idle configuration, how often we send the report to the
 // host (ms * 4) even when it hasn't changed
-uint8_t keyboard_idle_config=125;
+uint8_t keyboard_idle_config = 125;
 
 // count until idle timeout
-uint8_t keyboard_idle_count=0;
+uint8_t keyboard_idle_count = 0;
 
 // 1=num lock, 2=caps lock, 4=scroll lock, 8=compose, 16=kana
-volatile uint8_t keyboard_leds=0;
+volatile uint8_t keyboard_leds = 0;
 
 volatile uint8_t g_async_send_required = 0;
 
 static void usb_keyboard_press_key(uint8_t key, uint8_t modifier);
 static void usb_keyboard_release_key(uint8_t key, uint8_t modifier);
 static uint8_t keycode_to_modifier(uint16_t raw_key_code);
-
 
 uint8_t keycode_to_modifier(uint16_t raw_key_code)
 {
@@ -129,6 +128,8 @@ uint8_t keycode_to_modifier(uint16_t raw_key_code)
     {
         modifier = 1UL << shift_by;
     }
+
+    return modifier;
 }
 
 void usb_keyboard_press_custom(uint16_t raw_key_code)
@@ -137,19 +138,20 @@ void usb_keyboard_press_custom(uint16_t raw_key_code)
     uint8_t modifier = 0, mod_flag = 0;
     uint8_t send_required = 0;
 
-    modifier =  keycode_to_modifier(raw_key_code);
+    modifier = keycode_to_modifier(raw_key_code);
 
     if (modifier)
     {
         keycode = 0;
     }
+    else
     {
-        keycode = (KEYCODE_TYPE) raw_key_code;
+        keycode = (KEYCODE_TYPE)raw_key_code;
     }
-    
+
     if (keycode || modifier)
     {
-        usb_keyboard_press_key(keycode, 2);
+        usb_keyboard_press_key(keycode, modifier);
     }
 }
 
@@ -165,6 +167,7 @@ void usb_keyboard_release_custom(uint16_t raw_key_code)
     {
         keycode = 0;
     }
+    else
     {
         keycode = (KEYCODE_TYPE)raw_key_code;
     }
@@ -179,7 +182,8 @@ static void usb_keyboard_press_key(uint8_t key, uint8_t modifier)
 {
     int i, send_required = 0;
 
-    if (modifier) {
+    if (modifier)
+    {
         if ((g_keyboard_modifier_keys & modifier) != modifier)
         {
             cli();
@@ -188,11 +192,15 @@ static void usb_keyboard_press_key(uint8_t key, uint8_t modifier)
             sei();
         }
     }
-    if (key) {
-        for (i=0; i < 6; i++) {
-            if (g_keyboard_keys[i] == key) goto end;
+    if (key)
+    {
+        for (i = 0; i < 6; i++)
+        {
+            if (g_keyboard_keys[i] == key)
+                goto end;
         }
-        for (i=0; i < 6; i++) {
+        for (i = 0; i < 6; i++)
+        {
             if (g_keyboard_keys[i] == 0)
             {
                 cli();
@@ -211,7 +219,8 @@ static void usb_keyboard_release_key(uint8_t key, uint8_t modifier)
 {
     int i, send_required = 0;
 
-    if (modifier) {
+    if (modifier)
+    {
         if ((g_keyboard_modifier_keys & modifier) != 0)
         {
             cli();
@@ -220,8 +229,10 @@ static void usb_keyboard_release_key(uint8_t key, uint8_t modifier)
             sei();
         }
     }
-    if (key) {
-        for (i=0; i < 6; i++) {
+    if (key)
+    {
+        for (i = 0; i < 6; i++)
+        {
             if (g_keyboard_keys[i] == key)
             {
                 cli();
@@ -239,13 +250,14 @@ void usb_keyboard_release_all(void)
 
     anybits = g_keyboard_modifier_keys;
     g_keyboard_modifier_keys = 0;
-    for (i=0; i < 6; i++) {
+    for (i = 0; i < 6; i++)
+    {
         anybits |= g_keyboard_keys[i];
         g_keyboard_keys[i] = 0;
     }
-    if (anybits) usb_keyboard_send();
+    if (anybits)
+        usb_keyboard_send();
 }
-
 
 int usb_keyboard_press(uint8_t key, uint8_t modifier)
 {
@@ -258,44 +270,44 @@ int usb_keyboard_press(uint8_t key, uint8_t modifier)
     g_keyboard_keys[4] = 0;
     g_keyboard_keys[5] = 0;
     r = usb_keyboard_send();
-    if (r) return r;
+    if (r)
+        return r;
     g_keyboard_modifier_keys = 0;
     g_keyboard_keys[0] = 0;
     return usb_keyboard_send();
 }
 
-
 // Maximum number of transmit packets to queue so we don't starve other endpoints for memory
 #define TX_PACKET_LIMIT 4
 
-static uint8_t transmit_previous_timeout=0;
+static uint8_t transmit_previous_timeout = 0;
 
 // When the PC isn't listening, how long do we wait before discarding data?
 #define TX_TIMEOUT_MSEC 50
 #if F_CPU == 256000000
-  #define TX_TIMEOUT (TX_TIMEOUT_MSEC * 1706)
+#define TX_TIMEOUT (TX_TIMEOUT_MSEC * 1706)
 #elif F_CPU == 240000000
-  #define TX_TIMEOUT (TX_TIMEOUT_MSEC * 1600)
+#define TX_TIMEOUT (TX_TIMEOUT_MSEC * 1600)
 #elif F_CPU == 216000000
-  #define TX_TIMEOUT (TX_TIMEOUT_MSEC * 1440)
+#define TX_TIMEOUT (TX_TIMEOUT_MSEC * 1440)
 #elif F_CPU == 192000000
-  #define TX_TIMEOUT (TX_TIMEOUT_MSEC * 1280)
+#define TX_TIMEOUT (TX_TIMEOUT_MSEC * 1280)
 #elif F_CPU == 180000000
-  #define TX_TIMEOUT (TX_TIMEOUT_MSEC * 1200)
+#define TX_TIMEOUT (TX_TIMEOUT_MSEC * 1200)
 #elif F_CPU == 168000000
-  #define TX_TIMEOUT (TX_TIMEOUT_MSEC * 1100)
+#define TX_TIMEOUT (TX_TIMEOUT_MSEC * 1100)
 #elif F_CPU == 144000000
-  #define TX_TIMEOUT (TX_TIMEOUT_MSEC * 932)
+#define TX_TIMEOUT (TX_TIMEOUT_MSEC * 932)
 #elif F_CPU == 120000000
-  #define TX_TIMEOUT (TX_TIMEOUT_MSEC * 764)
+#define TX_TIMEOUT (TX_TIMEOUT_MSEC * 764)
 #elif F_CPU == 96000000
-  #define TX_TIMEOUT (TX_TIMEOUT_MSEC * 596)
+#define TX_TIMEOUT (TX_TIMEOUT_MSEC * 596)
 #elif F_CPU == 72000000
-  #define TX_TIMEOUT (TX_TIMEOUT_MSEC * 512)
+#define TX_TIMEOUT (TX_TIMEOUT_MSEC * 512)
 #elif F_CPU == 48000000
-  #define TX_TIMEOUT (TX_TIMEOUT_MSEC * 428)
+#define TX_TIMEOUT (TX_TIMEOUT_MSEC * 428)
 #elif F_CPU == 24000000
-  #define TX_TIMEOUT (TX_TIMEOUT_MSEC * 262)
+#define TX_TIMEOUT (TX_TIMEOUT_MSEC * 262)
 #endif
 
 // send the contents of g_keyboard_keys and g_keyboard_modifier_keys
@@ -331,7 +343,6 @@ void usb_keyboard_send_custom(void)
         tx_packet->len = 8;
         usb_tx(KEYBOARD_ENDPOINT, tx_packet);
     }
-
 }
 
 // send the contents of g_keyboard_keys and g_keyboard_modifier_keys
@@ -349,18 +360,23 @@ int usb_keyboard_send(void)
     serial_print("\n");
 #endif
 #if 1
-    uint32_t wait_count=0;
+    uint32_t wait_count = 0;
     usb_packet_t *tx_packet;
 
-    while (1) {
-        if (!usb_configuration) {
+    while (1)
+    {
+        if (!usb_configuration)
+        {
             return -1;
         }
-        if (usb_tx_packet_count(KEYBOARD_ENDPOINT) < TX_PACKET_LIMIT) {
+        if (usb_tx_packet_count(KEYBOARD_ENDPOINT) < TX_PACKET_LIMIT)
+        {
             tx_packet = usb_malloc();
-            if (tx_packet) break;
+            if (tx_packet)
+                break;
         }
-        if (++wait_count > TX_TIMEOUT || transmit_previous_timeout) {
+        if (++wait_count > TX_TIMEOUT || transmit_previous_timeout)
+        {
             transmit_previous_timeout = 1;
             return -1;
         }
