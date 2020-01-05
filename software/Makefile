@@ -30,7 +30,7 @@
 # SOFTWARE.
 
 # extra flags
-USER_DEFINES = -DUSB_KEYBOARDONLY 
+USER_DEFINES = -DUSB_KEYBOARDONLY
 # -DUSB_KEYBOARDONLY
 # -DUSB_SERIAL -DDEBUG 
 
@@ -71,10 +71,10 @@ TOOLSPATH = /home/conor/teensy_tools
 # Settings below this point usually do not need to be edited
 #************************************************************************
 
-CPPLIBS += $(foreach lib,$(EXTRALIBS),-I$(lib))
+CXX_LIBS += $(foreach lib,$(EXTRALIBS),-I$(lib))
 
 # CPPFLAGS = compiler options for C and C++
-CPPFLAGS += -Wall -g -Os -mthumb -MMD $(OPTIONS) -I. $(CPPLIBS) -I$(COREPATH) -I$(COREPATH)/avr
+CPPFLAGS += -Wall -g -Os -mthumb -MMD $(OPTIONS) -I. $(CXX_LIBS) -I$(COREPATH) -I$(COREPATH)/avr
 
 
 # compiler options for C++ only
@@ -133,12 +133,14 @@ endif
 # compiler generated dependency info
 -include $(OBJS:.o=.d)
 
+.PHONY: program
 program:
 	$(TOOLSPATH)/teensy_post_compile -file=$(TARGET) -path=$(shell pwd) -tools=$(TOOLSPATH)
 	-$(TOOLSPATH)/teensy_reboot
 	sleep 2
 	screen /dev/ttyACM0 115200
 
+.PHONY: clean
 clean:
 	rm -f $(CLEAN_TARGETS)
 

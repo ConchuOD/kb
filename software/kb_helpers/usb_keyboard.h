@@ -64,7 +64,6 @@ extern volatile uint8_t keyboard_leds;
 // C++ interface
 #ifdef __cplusplus
 #include "Stream.h"
-#include "IntervalTimer.h"
 
 class usb_keyboard_class : public Print
 {
@@ -79,11 +78,10 @@ public:
 	using Print::write;
 	void write_unicode(uint16_t n) { }
 
-	IntervalTimer sendKeysTimer;
 
 	void press_custom(uint16_t n) { usb_keyboard_press_custom(n); }
 	void release_custom(uint16_t n) { usb_keyboard_release_custom(n); }
-	void setup_custom(void) { sendKeysTimer.begin(usb_keyboard_send_custom, 1000); }
+	void setup_custom(void) { }
 
 	void set_modifier(uint16_t c) { keyboard_modifier_keys = (uint8_t)c; }
 	void set_key1(uint8_t c) { keyboard_keys[0] = c; }

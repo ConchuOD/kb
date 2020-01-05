@@ -89,7 +89,7 @@
 #define KC_LEFT           0x50
 #define KC_DOWN           0x51
 #define KC_UP             0x52
-#define KC_NUMLOCK        0x53
+#define KC_NUMLK          0x53
 
 #define KC_NSLSH          0x54
 #define KC_NSTAR          0x55
@@ -143,9 +143,9 @@
 #define KC__MUTE          0x7F
 #define KC__VOLUP         0x80
 #define KC__VOLDOWN       0x81
-#define KC_CAPSLK         0x82
-#define KC_NUMLK          0x83
-#define KC_SCROLLLK       0x84
+#define KC_CAPSLK_LEGACY  0x82
+#define KC_NUMLK_LEGACY   0x83
+#define KC_SCROLK_LEGACY  0x84
 #define KC_INT1           0x87
 #define KC_INT2           0x88
 #define KC_INT3           0x89

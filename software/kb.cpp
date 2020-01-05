@@ -34,8 +34,6 @@ int main(void)
         }
     }
 
-    Keyboard.setup_custom();
-
     /* Main loop */
     for (; /*ever*/;)
     {
@@ -72,4 +70,3 @@ int main(void)
         } // column increment
     } // for ever
 } // main
-
