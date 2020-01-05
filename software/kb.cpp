@@ -1,9 +1,8 @@
 /* includes */
-//#include "keyboard.h"
 #include "tester.h"
 #include "kb_matrix.h"
 #include <Arduino.h>
-#include "usb_keyboard.h"
+#include "usb_kb.h"
 
 /* defines */
 #define SERIAL_BAUD_RATE 115200
@@ -60,11 +59,11 @@ int main(void)
 
                 if (pressed[col_inc][row_inc] & 1UL) // if 
                 {
-                    Keyboard.press_custom(matrix_to_keycode[col_inc * NUM_ROWS + row_inc]);
+                    Kb.press_custom(matrix_to_keycode[col_inc * NUM_ROWS + row_inc]);
                 }
                 else if (pressed[col_inc][row_inc] & 2UL) // if most recent was zero but previous 1
                 {
-                    Keyboard.release_custom(matrix_to_keycode[col_inc * NUM_ROWS + row_inc]);
+                    Kb.release_custom(matrix_to_keycode[col_inc * NUM_ROWS + row_inc]);
                 }
             } // row increment
         } // column increment

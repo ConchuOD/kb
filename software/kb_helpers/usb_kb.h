@@ -28,8 +28,8 @@
  * SOFTWARE.
  */
 
-#ifndef USBkeyboard_h_
-#define USBkeyboard_h_
+#ifndef USBkb_h_
+#define USBkb_h_
 
 #include "usb_desc.h"
 
@@ -65,7 +65,7 @@ extern volatile uint8_t keyboard_leds;
 #ifdef __cplusplus
 #include "Stream.h"
 
-class usb_keyboard_class : public Print
+class usb_keyboard : public Print
 {
 public:
 	void begin(void) { }
@@ -96,10 +96,10 @@ public:
 	void releaseAll(void) { }
 };
 
-extern usb_keyboard_class Keyboard;
+extern usb_keyboard Kb;
 
 #endif // __cplusplus
 
 #endif // KEYBOARD_INTERFACE
 
-#endif // USBkeyboard_h_
+#endif // USBkb_h_

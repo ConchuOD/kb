@@ -29,7 +29,7 @@
  */
 
 #include "usb_dev.h"
-#include "usb_keyboard.h"
+#include "usb_kb.h"
 #include "core_pins.h" // for yield()
 #include "keylayouts.h"
 #include <string.h> // for memcpy()
